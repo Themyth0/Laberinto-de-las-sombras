@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cuckjdi6gpo5r"]
+
+[ext_resource type="Script" uid="uid://j7iruskdynyo" path="res://Scripts/pinchos.gd" id="1_gex0h"]
+[ext_resource type="Texture2D" uid="uid://c0at4ie7aa6r2" path="res://Default/spikes.png" id="2_qnqkg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aq3ie"]
+size = Vector2(44, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hshmq"]
+size = Vector2(44, 24)
+
+[node name="Pinchos" type="CharacterBody2D" unique_id=1545008567]
+script = ExtResource("1_gex0h")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=642152217]
+texture_filter = 1
+position = Vector2(16.444, 9.672)
+scale = Vector2(0.732625, 0.646)
+texture = ExtResource("2_qnqkg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=989056139]
+position = Vector2(17, 20.5)
+shape = SubResource("RectangleShape2D_aq3ie")
+
+[node name="ZonaMuerte" type="Area2D" parent="." unique_id=457033392]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaMuerte" unique_id=20273989]
+position = Vector2(17, 18)
+shape = SubResource("RectangleShape2D_hshmq")
+
+[connection signal="body_entered" from="ZonaMuerte" to="." method="_on_zona_muerte_body_entered"]

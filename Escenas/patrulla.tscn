@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://dngg7h0gt7c2r"]
+
+[ext_resource type="Script" uid="uid://b0vyrdu4un4ul" path="res://Scripts/patrulla.gd" id="1_7lldf"]
+[ext_resource type="Texture2D" uid="uid://6midnsds5kh2" path="res://free-underwater-enemies-pixel-art-character-pack/2/Walk.png" id="2_7lldf"]
+[ext_resource type="Texture2D" uid="uid://d17ijo6wyeqnx" path="res://free-underwater-enemies-pixel-art-character-pack/2/Idle.png" id="3_2k8i3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1vws"]
+atlas = ExtResource("2_7lldf")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4w6f"]
+atlas = ExtResource("2_7lldf")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnmta"]
+atlas = ExtResource("2_7lldf")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsigf"]
+atlas = ExtResource("2_7lldf")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5vnb"]
+atlas = ExtResource("2_7lldf")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b150p"]
+atlas = ExtResource("2_7lldf")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rjfd"]
+atlas = ExtResource("3_2k8i3")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ic2fv"]
+atlas = ExtResource("3_2k8i3")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwpd4"]
+atlas = ExtResource("3_2k8i3")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhf5g"]
+atlas = ExtResource("3_2k8i3")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0aoo6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1vws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4w6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnmta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsigf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5vnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b150p")
+}],
+"loop": true,
+"name": &"Caminar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rjfd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ic2fv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwpd4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhf5g")
+}],
+"loop": true,
+"name": &"Parado",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aq3ie"]
+size = Vector2(20, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hshmq"]
+size = Vector2(22, 11)
+
+[sub_resource type="Gradient" id="Gradient_jyan8"]
+offsets = PackedFloat32Array(0.14438502, 0.72727275)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aq3ie"]
+gradient = SubResource("Gradient_jyan8")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Patrulla" type="CharacterBody2D" unique_id=1545008567]
+texture_filter = 1
+script = ExtResource("1_7lldf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1290943597]
+texture_filter = 1
+position = Vector2(19, 3)
+sprite_frames = SubResource("SpriteFrames_0aoo6")
+animation = &"Parado"
+autoplay = "Caminar"
+frame_progress = 0.14428258
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=989056139]
+position = Vector2(11, 9)
+shape = SubResource("RectangleShape2D_aq3ie")
+
+[node name="ZonaMuerte" type="Area2D" parent="." unique_id=457033392]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaMuerte" unique_id=20273989]
+position = Vector2(10, 8.5)
+shape = SubResource("RectangleShape2D_hshmq")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=2045291074]
+light_mask = 0
+visibility_layer = 0
+position = Vector2(19.999996, 11.5)
+scale = Vector2(1.578125, 0.5703125)
+color = Color(0.7593335, 0.4816057, 0.108799286, 1)
+energy = 3.23
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_aq3ie")
+texture_scale = 2.0
+
+[connection signal="body_entered" from="ZonaMuerte" to="." method="_on_zona_muerte_body_entered"]

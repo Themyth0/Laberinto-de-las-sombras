@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dx5ulnsaw6s2y"]
+
+[ext_resource type="Script" uid="uid://behmo2671aer5" path="res://interfaz_usuario (2).gd" id="1_bp3nw"]
+[ext_resource type="FontFile" uid="uid://btc4ciklo5skr" path="res://Fonts/Pixel12x10Mono-v1.1.0.ttf" id="2_dicro"]
+[ext_resource type="AudioStream" uid="uid://c2qgx0hofk4u0" path="res://Sonido/gghj.wav" id="3_dgbnd"]
+[ext_resource type="AudioStream" uid="uid://0l54ni5gq1xn" path="res://Sonido/Steeps-of-Destiny.wav" id="4_i70lw"]
+
+[node name="InterfazUsuario" type="CanvasLayer" unique_id=765970099]
+script = ExtResource("1_bp3nw")
+
+[node name="ContadorTexto" type="Label" parent="." unique_id=384540181]
+offset_left = -1.0
+offset_top = 2.0
+offset_right = 119.0
+offset_bottom = 33.0
+theme_override_fonts/font = ExtResource("2_dicro")
+text = "Llaves 0/3"
+
+[node name="MensajeAviso" type="Label" parent="." unique_id=21701099]
+offset_left = 532.0
+offset_top = 3.0
+offset_right = 682.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("2_dicro")
+
+[node name="Musica1" type="AudioStreamPlayer" parent="." unique_id=1817334852]
+stream = ExtResource("3_dgbnd")
+
+[node name="Musica2" type="AudioStreamPlayer" parent="." unique_id=1191111446]
+stream = ExtResource("4_i70lw")

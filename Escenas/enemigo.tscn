@@ -1,0 +1,216 @@
+[gd_scene format=3 uid="uid://deupql3tjthvc"]
+
+[ext_resource type="Texture2D" uid="uid://dp7n4bxg563a6" path="res://free-underwater-enemies-pixel-art-character-pack/1/Walk.png" id="1_ke6sm"]
+[ext_resource type="Texture2D" uid="uid://bx03w5npkcxcp" path="res://free-underwater-enemies-pixel-art-character-pack/1/Idle.png" id="2_s6d1f"]
+
+[sub_resource type="GDScript" id="GDScript_ke6sm"]
+script/source = "extends CharacterBody2D
+@onready var sprite= $AnimatedSprite2D
+@export var velocidad = 50.0
+var player = null
+var persiguiendo = false
+
+func _physics_process(delta):
+	
+	if persiguiendo and player:
+		var direccion = (player.global_position - global_position).normalized()
+		velocity.x = direccion.x * velocidad
+		actualizar_orientacion(player.global_position)
+	else:
+		velocity.x = move_toward(velocity.x, 0, velocidad) 
+
+	
+	if not is_on_floor():
+		velocity.y += get_gravity().y * delta
+
+	
+	actualizar_animaciones()
+
+	move_and_slide()
+
+func actualizar_animaciones():
+	
+	if abs(velocity.x) > 1:
+		sprite.play(\"Caminar\")
+	else:
+		sprite.play(\"Parado\")
+	
+	move_and_slide()
+	
+	
+	if velocity.x != 0:
+		actualizar_orientacion(player.global_position)
+	
+func actualizar_orientacion(objetivo_pos: Vector2):
+	
+	if objetivo_pos.x < global_position.x:
+		sprite.flip_h = true  
+	else:
+		sprite.flip_h = false 
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	print(\"Algo entró al área: \", body.name) 
+	if body.is_in_group(\"Jugador\"):
+		print(\"¡Es el jugador!\")
+		player = body
+		persiguiendo = true
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body == player:
+		persiguiendo = false
+		player = null
+		print(\"El jugador escapó\")
+
+
+func _on_area_2d_2_body_entered(body: Node2D) -> void:
+	if body.is_in_group(\"Jugador\"):
+		if body.has_method(\"recibir_dano\"):
+			body.recibir_dano()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6d1f"]
+atlas = ExtResource("1_ke6sm")
+region = Rect2(3, 7, 45, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnsic"]
+atlas = ExtResource("1_ke6sm")
+region = Rect2(50, 7, 45, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hygs5"]
+atlas = ExtResource("1_ke6sm")
+region = Rect2(97, 7, 45, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpvq3"]
+atlas = ExtResource("1_ke6sm")
+region = Rect2(144, 7, 45, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rm437"]
+atlas = ExtResource("1_ke6sm")
+region = Rect2(191, 7, 45, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvuue"]
+atlas = ExtResource("1_ke6sm")
+region = Rect2(238, 7, 45, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lergm"]
+atlas = ExtResource("2_s6d1f")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2dh5"]
+atlas = ExtResource("2_s6d1f")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucl7h"]
+atlas = ExtResource("2_s6d1f")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qruma"]
+atlas = ExtResource("2_s6d1f")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0aoo6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6d1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnsic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hygs5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpvq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rm437")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvuue")
+}],
+"loop": true,
+"name": &"Caminar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lergm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2dh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucl7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qruma")
+}],
+"loop": true,
+"name": &"Parado",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aq3ie"]
+size = Vector2(20, 34)
+
+[sub_resource type="Gradient" id="Gradient_qnsic"]
+offsets = PackedFloat32Array(0.14438502, 0.72727275)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aq3ie"]
+gradient = SubResource("Gradient_qnsic")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lergm"]
+radius = 16.967731
+height = 182.09492
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ke6sm"]
+size = Vector2(27, 34)
+
+[node name="Patrullapers" type="CharacterBody2D" unique_id=1545008567]
+texture_filter = 1
+script = SubResource("GDScript_ke6sm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1290943597]
+texture_filter = 1
+position = Vector2(5, -21)
+sprite_frames = SubResource("SpriteFrames_0aoo6")
+animation = &"Parado"
+frame = 3
+frame_progress = 0.45992723
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=989056139]
+position = Vector2(-2, -18)
+shape = SubResource("RectangleShape2D_aq3ie")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=2045291074]
+light_mask = 0
+visibility_layer = 0
+position = Vector2(6, -20)
+scale = Vector2(1.578125, 0.25)
+color = Color(0.7593335, 0.4816057, 0.108799286, 1)
+energy = 3.23
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_aq3ie")
+texture_scale = 2.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1558600268]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=234121095]
+position = Vector2(-3, -17)
+rotation = 1.5444332
+shape = SubResource("CapsuleShape2D_lergm")
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=907025719]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1442860869]
+position = Vector2(-3, -18)
+shape = SubResource("RectangleShape2D_ke6sm")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]

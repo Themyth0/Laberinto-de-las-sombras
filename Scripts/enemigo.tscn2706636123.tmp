@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://deupql3tjthvc"]
+
+[ext_resource type="Texture2D" uid="uid://dp7n4bxg563a6" path="res://free-underwater-enemies-pixel-art-character-pack/1/Walk.png" id="1_ke6sm"]
+[ext_resource type="Script" uid="uid://d1ls0m4nrh2s6" path="res://Scripts/enemigo.gd" id="1_s6d1f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6d1f"]
+atlas = ExtResource("1_ke6sm")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnsic"]
+atlas = ExtResource("1_ke6sm")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hygs5"]
+atlas = ExtResource("1_ke6sm")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpvq3"]
+atlas = ExtResource("1_ke6sm")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rm437"]
+atlas = ExtResource("1_ke6sm")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvuue"]
+atlas = ExtResource("1_ke6sm")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lergm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6d1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnsic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hygs5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpvq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rm437")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvuue")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2dh5"]
+size = Vector2(25, 59)
+
+[node name="Enemigo" type="Area2D" unique_id=1108821151]
+script = ExtResource("1_s6d1f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1784934370]
+position = Vector2(16, -17.5)
+scale = Vector2(1.6666667, 1.7291669)
+sprite_frames = SubResource("SpriteFrames_lergm")
+animation = &"Walk"
+autoplay = "Walk"
+frame = 1
+frame_progress = 0.62703556
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1724756578]
+position = Vector2(31.5, -6.5)
+shape = SubResource("RectangleShape2D_d2dh5")
+
+[node name="Timer" type="Timer" parent="." unique_id=2029971092]
+wait_time = 1.46
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

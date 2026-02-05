@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b2xs7ofhd8q76"]
+
+[ext_resource type="Script" uid="uid://1avs8qalgqi8" path="res://Scripts/moneda.gd" id="1_o3p2m"]
+[ext_resource type="Texture2D" uid="uid://cgtrhnm3uxx7l" path="res://Default/key_yellow.png" id="2_o3p2m"]
+[ext_resource type="AudioStream" uid="uid://b1p430keekwc2" path="res://Sonido/coin.wav" id="3_o3p2m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iubt5"]
+size = Vector2(40, 26)
+
+[node name="LLave" type="Area2D" unique_id=422823052]
+texture_filter = 1
+script = ExtResource("1_o3p2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=205243991]
+position = Vector2(0, 4.5)
+scale = Vector2(0.6875, 0.859375)
+texture = ExtResource("2_o3p2m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2020859944]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_iubt5")
+
+[node name="Audiomoneda" type="AudioStreamPlayer" parent="." unique_id=1184821247]
+stream = ExtResource("3_o3p2m")
+max_polyphony = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
