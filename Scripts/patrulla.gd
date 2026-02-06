@@ -46,10 +46,8 @@ func patrullar():
 	if distancia < 15.0:
 		if objetivo_actual == punto_a:
 			objetivo_actual = punto_b
-			print("Cambiando a Punto B")
 		else:
 			objetivo_actual = punto_a
-			print("Cambiando a Punto A")
 			
 	perseguir_objetivo(objetivo_actual.global_position, velocidad_patrulla)
 

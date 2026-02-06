@@ -50,9 +50,8 @@ func actualizar_orientacion(objetivo_pos: Vector2):
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print(\"Algo entró al área: \", body.name) 
 	if body.is_in_group(\"Jugador\"):
-		print(\"¡Es el jugador!\")
+		
 		player = body
 		persiguiendo = true
 
@@ -60,7 +59,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body == player:
 		persiguiendo = false
 		player = null
-		print(\"El jugador escapó\")
+
 
 
 func _on_area_2d_2_body_entered(body: Node2D) -> void:

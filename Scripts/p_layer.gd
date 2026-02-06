@@ -85,7 +85,6 @@ func recibir_dano():
 	actualizar_interfaz()
 	
 	if vida <= 0:
-		print("¡Game Over!")
 		Global.monedas = 0 
 		
 		if audio_dolor.playing:
