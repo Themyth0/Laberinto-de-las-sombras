@@ -153,7 +153,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aq3ie"]
-size = Vector2(20, 34)
+size = Vector2(20, 38)
 
 [sub_resource type="Gradient" id="Gradient_qnsic"]
 offsets = PackedFloat32Array(0.14438502, 0.72727275)
@@ -184,7 +184,7 @@ frame = 3
 frame_progress = 0.45992723
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=989056139]
-position = Vector2(-2, -18)
+position = Vector2(-2, -16)
 shape = SubResource("RectangleShape2D_aq3ie")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=2045291074]

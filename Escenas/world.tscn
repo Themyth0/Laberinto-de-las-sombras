@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://cwfy6et74up7q"]
 
 [ext_resource type="PackedScene" uid="uid://b7227dlhnugiv" path="res://Escenas/Niveles/nivel.tscn" id="1_8usl3"]
+[ext_resource type="PackedScene" uid="uid://b3l7dec738h5i" path="res://Escenas/Niveles/nivel_2.tscn" id="2_r16dl"]
 
 [node name="World" type="Node2D" unique_id=1959799164]
 
 [node name="Nivel" parent="." unique_id=2006396024 instance=ExtResource("1_8usl3")]
+
+[node name="Nivel2" parent="." unique_id=1049178433 instance=ExtResource("2_r16dl")]
