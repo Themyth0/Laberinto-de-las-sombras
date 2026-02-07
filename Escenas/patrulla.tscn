@@ -91,7 +91,7 @@ animations = [{
 size = Vector2(20, 35)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hshmq"]
-size = Vector2(35, 35)
+size = Vector2(35, 36)
 
 [sub_resource type="Gradient" id="Gradient_jyan8"]
 offsets = PackedFloat32Array(0.14438502, 0.72727275)
@@ -121,7 +121,7 @@ shape = SubResource("RectangleShape2D_aq3ie")
 [node name="ZonaMuerte" type="Area2D" parent="." unique_id=457033392]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaMuerte" unique_id=20273989]
-position = Vector2(15.5, 9.5)
+position = Vector2(15.5, 9)
 shape = SubResource("RectangleShape2D_hshmq")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=2045291074]

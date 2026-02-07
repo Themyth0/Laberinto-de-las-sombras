@@ -61,6 +61,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		player = null
 
 
+
 func _on_area_2d_2_body_entered(body: Node2D) -> void:
 	if body.is_in_group(\"Jugador\"):
 		if body.has_method(\"recibir_dano\"):
@@ -151,7 +152,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aq3ie"]
-size = Vector2(20, 35)
+size = Vector2(20, 38)
 
 [sub_resource type="Gradient" id="Gradient_qnsic"]
 offsets = PackedFloat32Array(0.14438502, 0.72727275)
@@ -182,7 +183,7 @@ frame = 3
 frame_progress = 0.45992723
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=989056139]
-position = Vector2(-2, -14.5)
+position = Vector2(-2, -16)
 shape = SubResource("RectangleShape2D_aq3ie")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=2045291074]

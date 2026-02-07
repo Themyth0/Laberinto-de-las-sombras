@@ -354,7 +354,7 @@ position = Vector2(112, 316)
 position = Vector2(464, 683)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1943344008]
-color = Color(0, 0, 0.011735383, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="Patrulla" parent="." unique_id=1545008567 node_paths=PackedStringArray("punto_a", "punto_b") instance=ExtResource("5_gqnk4")]
 position = Vector2(344, 370)
