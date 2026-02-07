@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cnc7jd0bdibll" path="res://Escenas/puerta.tscn" id="8_rokh0"]
 [ext_resource type="PackedScene" uid="uid://b2xs7ofhd8q76" path="res://Escenas/l_lave.tscn" id="9_61stx"]
 [ext_resource type="PackedScene" uid="uid://cuckjdi6gpo5r" path="res://Escenas/pinchos.tscn" id="10_hty7f"]
+[ext_resource type="PackedScene" uid="uid://c6c7pgbk12ulv" path="res://Escenas/corazon.tscn" id="11_n858a"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gqnk4"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -406,5 +407,8 @@ position = Vector2(744, 273)
 
 [node name="Pinchos3" parent="." unique_id=955149863 instance=ExtResource("10_hty7f")]
 position = Vector2(588, 434)
+
+[node name="Corazon" parent="." unique_id=1440304889 instance=ExtResource("11_n858a")]
+position = Vector2(40, 277)
 
 [connection signal="pressed" from="InterfazUsuario/VBoxContainer/Button" to="InterfazUsuario" method="_on_button_pressed"]

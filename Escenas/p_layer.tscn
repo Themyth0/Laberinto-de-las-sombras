@@ -340,9 +340,17 @@ theme_override_constants/separation = -37
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/ContenedorCorazones" unique_id=391286621]
+modulate = Color(0, 5.912981, 5.912981, 1)
 layout_mode = 2
 texture = ExtResource("6_wj8tj")
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ContenedorCorazones" unique_id=241474076]
+modulate = Color(0, 5.912981, 5.912981, 1)
+layout_mode = 2
+texture = ExtResource("6_wj8tj")
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ContenedorCorazones" unique_id=1637061640]
+modulate = Color(0, 1.0627335, 1.0627335, 1)
+self_modulate = Color(1.0627335, 1.0627335, 1.0627335, 1)
 layout_mode = 2
 texture = ExtResource("6_wj8tj")

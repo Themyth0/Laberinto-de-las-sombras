@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cnc7jd0bdibll" path="res://Escenas/puerta.tscn" id="8_usjkl"]
 [ext_resource type="PackedScene" uid="uid://b2xs7ofhd8q76" path="res://Escenas/l_lave.tscn" id="9_vcap0"]
 [ext_resource type="PackedScene" uid="uid://cuckjdi6gpo5r" path="res://Escenas/pinchos.tscn" id="10_22o6q"]
+[ext_resource type="PackedScene" uid="uid://c6c7pgbk12ulv" path="res://Escenas/corazon.tscn" id="11_hwid3"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gqnk4"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -360,7 +361,7 @@ position = Vector2(506, 104)
 position = Vector2(75, 589)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1943344008]
-color = Color(0, 0, 0.012617188, 1)
+color = Color(0, 0, 0.005830113, 1)
 
 [node name="Patrulla" parent="." unique_id=1545008567 node_paths=PackedStringArray("punto_a", "punto_b") instance=ExtResource("6_0euti")]
 position = Vector2(345, 166)
@@ -424,5 +425,8 @@ position = Vector2(24, 588)
 [node name="Pinchos3" parent="." unique_id=798022968 instance=ExtResource("10_22o6q")]
 position = Vector2(189, 279)
 rotation = 1.5823339
+
+[node name="Corazon" parent="." unique_id=1440304889 instance=ExtResource("11_hwid3")]
+position = Vector2(35, 210)
 
 [connection signal="pressed" from="InterfazUsuario/VBoxContainer/Button" to="InterfazUsuario" method="_on_button_pressed"]

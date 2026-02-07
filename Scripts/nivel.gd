@@ -1,11 +1,9 @@
 extends  Node
 var musica_actual: AudioStreamPlayer
-
 func _ready():
 	musica_actual = $Musica1
 	$Musica1.volume_db = 0
 	$Musica2.volume_db = -80 
-
 func cambiar_musica(nodo_nuevo: AudioStreamPlayer, duracion: float = 2.0):
 	if nodo_nuevo == musica_actual:
 		return

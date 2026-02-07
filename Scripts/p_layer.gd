@@ -1,4 +1,5 @@
 extends CharacterBody2D
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var contenedor_corazones = $CanvasLayer/ContenedorCorazones
 @onready var label_llaves = $CanvasLayer/LabelLlaves
@@ -7,12 +8,13 @@ extends CharacterBody2D
 @onready var audio_caminar = $AudioCaminar
 
 var vida = 2
+var vida_maxima_posible = 3
 var es_invulnerable = false
 
 const SPEED = 150.0
 const JUMP_VELOCITY = -450.0
 const WALL_JUMP_VELOCITY = -400.0
-const WALL_JUMP_PUSH = 300.0      
+const WALL_JUMP_PUSH = 300.0
 
 signal sumallave
 
@@ -20,6 +22,7 @@ func _ready():
 	actualizar_interfaz()
 
 func _physics_process(delta: float) -> void:
+	# Gravedad
 	if not is_on_floor():
 		if is_on_wall() and velocity.y > 0:
 			velocity += get_gravity() * delta * 0.5
@@ -43,7 +46,6 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, direction * SPEED, 15.0)
-		
 		if is_on_floor() or not is_on_wall():
 			animated_sprite_2d.flip_h = (direction < 0)
 	else:
@@ -51,12 +53,12 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	gestionar_sonidos_estado()
 	actualizar_animaciones()
-	actualizar_interfaz()
 
 
 func reproducir_sonido_salto():
-	audio_saltar.pitch_scale = randf_range(0.9, 1.1)
-	audio_saltar.play()
+	if audio_saltar:
+		audio_saltar.pitch_scale = randf_range(0.9, 1.1)
+		audio_saltar.play()
 
 func gestionar_sonidos_estado():
 	if is_on_floor() and abs(velocity.x) > 0.1:
@@ -73,30 +75,39 @@ func actualizar_animaciones():
 		animated_sprite_2d.animation = "Correr"
 	else:
 		animated_sprite_2d.animation = "Parado"
+
 func recibir_dano():
 	if es_invulnerable:
 		return
 	
-	audio_dolor.pitch_scale = randf_range(0.9, 1.1)
-	audio_dolor.play()
+	if audio_dolor:
+		audio_dolor.pitch_scale = randf_range(0.9, 1.1)
+		audio_dolor.play()
 	
 	vida -= 1
 	actualizar_interfaz()
 	
 	if vida <= 0:
-		Global.monedas = 0 
-		
-		if audio_dolor.playing:
-			await audio_dolor.finished 
+		Global.monedas = 0
+		if audio_dolor and audio_dolor.playing:
+			await audio_dolor.finished
 		get_tree().reload_current_scene()
 	else:
 		activar_invulnerabilidad()
 
+
+func curar_vida():
+	if vida < vida_maxima_posible:
+		vida += 1
+		actualizar_interfaz()
+		return true 
+		return false
+
 func activar_invulnerabilidad():
 	es_invulnerable = true
-	modulate.a = 0.5 
+	modulate.a = 0.5
 	await get_tree().create_timer(1.0).timeout
-	modulate.a = 1.0
+	modulate.a = 6.0
 	es_invulnerable = false
 
 func actualizar_interfaz():
@@ -104,8 +115,9 @@ func actualizar_interfaz():
 		var corazones = contenedor_corazones.get_children()
 		for i in range(corazones.size()):
 			if i < vida:
-				corazones[i].modulate.a = 1.0
+				corazones[i].modulate = Color(0.0, 1.0, 1.0) * 6.0
+				corazones[i].modulate.a = 1.0 
 			else:
-				corazones[i].modulate.a = 0.3
+				corazones[i].modulate = Color(0.0, 0.027, 0.0, 0.302)
 	if label_llaves:
 		label_llaves.text = "Llaves: " + str(Global.monedas)

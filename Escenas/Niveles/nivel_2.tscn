@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cnc7jd0bdibll" path="res://Escenas/puerta.tscn" id="7_6xwjn"]
 [ext_resource type="PackedScene" uid="uid://b2xs7ofhd8q76" path="res://Escenas/l_lave.tscn" id="8_63ix7"]
 [ext_resource type="PackedScene" uid="uid://cuckjdi6gpo5r" path="res://Escenas/pinchos.tscn" id="9_nq8lc"]
+[ext_resource type="PackedScene" uid="uid://c6c7pgbk12ulv" path="res://Escenas/corazon.tscn" id="11_fij4q"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gqnk4"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -354,7 +355,7 @@ position = Vector2(147, 220)
 position = Vector2(397, 88)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1943344008]
-color = Color(0, 0, 0.011735383, 1)
+color = Color(0, 0, 0.012617188, 1)
 
 [node name="Puerta" parent="." unique_id=595226579 instance=ExtResource("7_6xwjn")]
 position = Vector2(724, 87)
@@ -406,5 +407,8 @@ position = Vector2(136, 637)
 
 [node name="Patrullapers3" parent="." unique_id=558597401 instance=ExtResource("6_00kau")]
 position = Vector2(302, 701)
+
+[node name="Corazon" parent="." unique_id=1440304889 instance=ExtResource("11_fij4q")]
+position = Vector2(38, 463)
 
 [connection signal="pressed" from="InterfazUsuario/VBoxContainer/Button" to="InterfazUsuario" method="_on_button_pressed"]

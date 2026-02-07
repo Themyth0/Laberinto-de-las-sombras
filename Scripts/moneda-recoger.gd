@@ -1,6 +1,5 @@
 extends Area2D
 @onready var audio_recoger = $AudioRecoger
-
 func _on_body_entered(body):
 	if body.is_in_group("Jugador"):
 		Global.monedas += 1

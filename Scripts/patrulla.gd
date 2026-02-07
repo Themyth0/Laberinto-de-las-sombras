@@ -27,7 +27,6 @@ func actualizar_orientacion(objetivo_pos: Vector2):
 		sprite.flip_h = true  
 	else:
 		sprite.flip_h = false 
-
 func patrullar():
 	
 	if not punto_a or not punto_b: 
@@ -56,7 +55,6 @@ func _on_area_2d_body_exited(body):
 	if body == player:
 		persiguiendo = false
 		player = null
-
 
 func _on_zona_muerte_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Jugador"):

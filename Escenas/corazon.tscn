@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c6c7pgbk12ulv"]
+
+[ext_resource type="Script" uid="uid://dc6u5h81vxlav" path="res://Scripts/corazon.gd" id="1_34m6i"]
+[ext_resource type="Texture2D" uid="uid://dqjy56iagyc3a" path="res://Imagenes/pixilart-drawing.png" id="1_xcli0"]
+[ext_resource type="AudioStream" uid="uid://b1p430keekwc2" path="res://Sonido/coin.wav" id="3_x3ou5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_34m6i"]
+radius = 15.033297
+
+[node name="Corazon" type="Area2D" unique_id=1440304889]
+script = ExtResource("1_34m6i")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=882912801]
+modulate = Color(0, 5.2618666, 5.2618666, 1)
+position = Vector2(-1.4999993, -0.25000173)
+scale = Vector2(0.49, 0.485)
+texture = ExtResource("1_xcli0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=230109524]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_34m6i")
+
+[node name="AudioCorazon" type="AudioStreamPlayer" parent="." unique_id=560224732]
+stream = ExtResource("3_x3ou5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
