@@ -1,5 +1,4 @@
 extends Area2D
-
 @export_file("*.tscn") var siguiente_nivel
 
 func _on_body_entered(body):

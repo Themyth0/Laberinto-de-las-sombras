@@ -360,7 +360,7 @@ position = Vector2(506, 104)
 position = Vector2(75, 589)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1943344008]
-color = Color(0, 0, 1.1159921, 1)
+color = Color(0, 0, 0.012617188, 1)
 
 [node name="Patrulla" parent="." unique_id=1545008567 node_paths=PackedStringArray("punto_a", "punto_b") instance=ExtResource("6_0euti")]
 position = Vector2(345, 166)

@@ -48,7 +48,6 @@ func _physics_process(delta: float) -> void:
 			animated_sprite_2d.flip_h = (direction < 0)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED / 10)
-
 	move_and_slide()
 	gestionar_sonidos_estado()
 	actualizar_animaciones()
