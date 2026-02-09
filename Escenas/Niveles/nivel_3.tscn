@@ -388,7 +388,7 @@ position = Vector2(263, 91)
 
 [node name="Puerta" parent="." unique_id=595226579 instance=ExtResource("8_rokh0")]
 position = Vector2(36, 87)
-siguiente_nivel = "uid://khr4n3ekdvgh"
+siguiente_nivel = "uid://gdpw17t1dfxc"
 
 [node name="LLave" parent="." unique_id=422823052 instance=ExtResource("9_61stx")]
 position = Vector2(528, 572)

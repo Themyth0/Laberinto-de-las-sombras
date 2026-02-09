@@ -311,13 +311,14 @@ shape = SubResource("RectangleShape2D_j6abo")
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1847648070]
 light_mask = 0
 visibility_layer = 0
-position = Vector2(-2.000001, 15.249994)
-scale = Vector2(2.3750002, 1.2617188)
+position = Vector2(-2, 11.000002)
+scale = Vector2(2.890625, 1.5195313)
 color = Color(0.0075111887, 0.552381, 0.60285205, 1)
-energy = 2.91
+energy = 3.57
 blend_mode = 2
 shadow_enabled = true
 shadow_filter = 1
+shadow_item_cull_mask = 3
 texture = SubResource("GradientTexture2D_q8ok8")
 texture_scale = 2.0
 
